@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+ <PropertyGroup>
+  <OutputType>Exe</OutputType>
+  <TargetFramework>net10.0-windows</TargetFramework>
+  <Nullable>enable</Nullable>
+  <ImplicitUsings>enable</ImplicitUsings>
+  <UseWindowsService>true</UseWindowsService>
+  <AssemblyName>Switch.Service.Host</AssemblyName>
+  <RootNamespace>Switch.Service.Host</RootNamespace>
+
+  <!-- Disable auto-generation of assembly attributes -->
+  <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+</PropertyGroup>
+
+
+  <ItemGroup>
+    <!-- BlockItem model lives one level up in Model/ -->
+    <Compile Include="..\Model\BlockItem.cs" />
+  </ItemGroup>
+
+  <!--
+    Exclude files that belong only to the main WPF app and must NOT be compiled
+    into the service (they reference WPF / WinForms assemblies not available here).
+  -->
+  <ItemGroup>
+    <Compile Remove="AutoStartHelper.cs" />
+    <Compile Remove="IconResolver.cs" />
+    <Compile Remove="ProcessHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.ServiceProcess.ServiceController" Version="10.0.12" />
+  </ItemGroup>
+
+</Project>

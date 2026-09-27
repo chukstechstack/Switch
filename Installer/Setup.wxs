@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*" Name="Switch" Language="1033" Version="1.0.0.0" Manufacturer="YourCompany" UpgradeCode="891d4a4d-e858-4efc-b64f-db85c4b73b4c">
+		<Package InstallerVersion="500" Compressed="yes" InstallScope="perMachine" />
+
+		<MediaTemplate />
+
+		<Feature Id="ProductFeature" Title="Switch" Level="1">
+			<ComponentGroupRef Id="AppFiles" />
+			<ComponentRef Id="cmpSwitchBlockerService" />
+			<ComponentRef Id="cmpUninstallChecker" />
+			<ComponentRef Id="cmpProgramMenuShortcut" />
+		</Feature>
+
+		<Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
+
+		<Icon Id="AppIcon" SourceFile="$(var.PublishFolder)\Switch\Switch.exe" />
+		<Property Id="ARPPRODUCTICON" Value="AppIcon" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+
+		<UIRef Id="WixUI_Minimal" />
+
+		<!-- Custom Action definition -->
+		<Binary Id="UninstallCheckerBinary" SourceFile="$(var.PublishFolder)\UninstallChecker\UninstallChecker.exe" />
+		<CustomAction Id="CheckUninstall"
+					  BinaryKey="UninstallCheckerBinary"
+					  ExeCommand=""
+					  Execute="deferred"
+					  Return="check"
+					  Impersonate="no" />
+
+		<InstallExecuteSequence>
+			<Custom Action="CheckUninstall" Before="InstallFinalize">REMOVE="ALL"</Custom>
+		</InstallExecuteSequence>
+
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="Switch">
+				</Directory>
+			</Directory>
+			<Directory Id="ProgramMenuFolder">
+				<Directory Id="ProgramMenuDir" Name="Switch" />
+			</Directory>
+		</Directory>
+
+		<DirectoryRef Id="INSTALLFOLDER">
+			<Component Id="cmpSwitchBlockerService" Guid="A1B2C3D4-E5F6-7890-ABCD-EF1234567890">
+				<File Id="SwitchBlockerExe"
+					  Source="$(var.PublishFolder)\Switch\Switch.Service.Host.exe"
+					  KeyPath="yes" />
+
+				<ServiceInstall Id="SwitchBlockerInstall"
+								Name="SwitchBlocker"
+								DisplayName="Switch App Blocker"
+								Description="Enforces Switch app blocks. Keeps running even if the Switch UI is closed."
+								Type="ownProcess"
+								Start="auto"
+								Account="LocalSystem"
+								ErrorControl="normal"
+								Interactive="no" />
+
+				<ServiceControl Id="SwitchBlockerControl"
+								Name="SwitchBlocker"
+								Start="install"
+								Stop="both"
+								Remove="uninstall"
+								Wait="yes" />
+			</Component>
+
+			<Component Id="cmpUninstallChecker" Guid="*">
+				<File Id="UninstallCheckerFile"
+					  Source="$(var.PublishFolder)\UninstallChecker\UninstallChecker.exe"
+					  KeyPath="yes" />
+			</Component>
+		</DirectoryRef>
+
+		<DirectoryRef Id="ProgramMenuDir">
+			<Component Id="cmpProgramMenuShortcut" Guid="*">
+				<Shortcut Id="AppShortcut"
+						  Name="Switch"
+						  Description="Launch Switch"
+						  Target="[INSTALLFOLDER]Switch.exe"
+						  WorkingDirectory="INSTALLFOLDER" />
+				<RemoveFolder Id="RemoveProgramMenuDir" On="uninstall" />
+				<RegistryValue Root="HKCU"
+							   Key="Software\YourCompany\Switch"
+							   Name="installed"
+							   Type="integer"
+							   Value="1"
+							   KeyPath="yes" />
+			</Component>
+		</DirectoryRef>
+
+	</Product>
+</Wix>

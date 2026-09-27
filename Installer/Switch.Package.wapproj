@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+	<WapProjPath Condition="'$(WapProjPath)'==''">$(MSBuildExtensionsPath)\Microsoft\DesktopBridge\</WapProjPath>
+	<TargetPlatformVersion>10.0.19041.0</TargetPlatformVersion>
+	<TargetPlatformMinVersion>10.0.19041.0</TargetPlatformMinVersion>
+	<ProjectGuid>{A8D41D65-220D-4C2F-BB61-7A7C68A57C0E}</ProjectGuid>
+	<DefaultLanguage>en-US</DefaultLanguage>
+	<AppxPackageSigningEnabled>true</AppxPackageSigningEnabled>
+	<GenerateAppxPackageOnBuild>true</GenerateAppxPackageOnBuild>
+	<EntryPointProjectUniqueName>..\Switch.csproj</EntryPointProjectUniqueName>
+	<PackageCertificateThumbprint></PackageCertificateThumbprint>
+	<PackageCertificateKeyFile></PackageCertificateKeyFile>
+  </PropertyGroup>
+
+  <ItemGroup Label="ProjectConfigurations">
+	<ProjectConfiguration Include="Debug|x64">
+	  <Configuration>Debug</Configuration>
+	  <Platform>x64</Platform>
+	</ProjectConfiguration>
+	<ProjectConfiguration Include="Release|x64">
+	  <Configuration>Release</Configuration>
+	  <Platform>x64</Platform>
+	</ProjectConfiguration>
+  </ItemGroup>
+
+  <PropertyGroup>
+	<Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+	<Platform Condition=" '$(Platform)' == '' ">x64</Platform>
+  </PropertyGroup>
+
+  <ItemGroup>
+	<AppxManifest Include="Package.appxmanifest" />
+  </ItemGroup>
+
+  <ItemGroup>
+	<ProjectReference Include="..\Switch.csproj" />
+	<ProjectReference Include="..\Service\SwitchService.Host.csproj" />
+  </ItemGroup>
+
+  <Import Project="$(WapProjPath)Microsoft.DesktopBridge.props" />
+  <Import Project="$(WapProjPath)Microsoft.DesktopBridge.targets" />
+</Project>

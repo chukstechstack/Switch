@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+        <DirectoryRef Id="INSTALLFOLDER">
+            <Directory Id="dir34CB97009E139CF9FA17DE25E5FE0BAB" Name="Switch" />
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="AppFiles">
+            <Component Id="cmp3F35E351BFD7DB1C4456E5B32BF935EE" Directory="dir34CB97009E139CF9FA17DE25E5FE0BAB" Guid="PUT-GUID-HERE">
+                <File Id="fil160778DAD231CB10BFD7F9C8A71709E4" KeyPath="yes" Source="SourceDir\Switch\Switch.exe" />
+            </Component>
+        </ComponentGroup>
+    </Fragment>
+</Wix>

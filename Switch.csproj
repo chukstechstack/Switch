@@ -1,0 +1,293 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
+    <!-- Suppress auto-generated AssemblyInfo to avoid duplicate attribute errors with WPF temp projects -->
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Assets\Images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Assets\Switch_Icon.ico" />
+  </ItemGroup>
+
+  <!-- ApplicationIcon/Win32Icon: enable embedding of the ICO into the built EXE. Ensure Assets\Switch_Icon.ico exists and is a valid multi-size .ico -->
+  <PropertyGroup>
+    <ApplicationIcon>Assets\Switch_Icon.ico</ApplicationIcon>
+    <Win32Icon>Assets\Switch_Icon.ico</Win32Icon>
+  </PropertyGroup>
+
+  <!-- No ApplicationIcon specified; Window uses vector DrawingImage resource for runtime icon -->
+
+  <!-- If you want to generate a proper .ico at build time, add a build step here. Currently we use a vector DrawingImage for Window.Icon. -->
+
+  <!-- Exclude tools and helper projects from the main app compile (they live in subfolders) -->
+  <ItemGroup>
+    <Compile Remove="UninstallChecker\**\*.cs" />
+    <Compile Remove="Service\obj\**\*.cs" />
+    <Compile Remove="Service\bin\**\*.cs" />
+    <!-- Exclude only the host/service entry point files that belong to the separate service host project -->
+    <Compile Remove="Service\HostProgram.cs" />
+    <Compile Remove="Service\BlockEnforcerService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Service\obj\**\*" />
+    <None Remove="Service\bin\**\*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Service\obj\**\*" />
+    <EmbeddedResource Remove="Service\bin\**\*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="Service\obj\**\*" />
+    <Page Remove="Service\bin\**\*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Remove="Service\obj\**\*" />
+    <Resource Remove="Service\bin\**\*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Analyzer Remove="Service\obj\**\*" />
+    <Analyzer Remove="Service\bin\**\*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Remove="Service\obj\**\*" />
+    <AdditionalFiles Remove="Service\bin\**\*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ClCompile Remove="Service\obj\**\*" />
+    <ClCompile Remove="Service\bin\**\*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Service\obj\**\*" />
+    <Content Remove="Service\bin\**\*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PriFile Remove="Service\obj\**\*" />
+    <PriFile Remove="Service\bin\**\*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AppxManifest Remove="Service\obj\**\*" />
+    <AppxManifest Remove="Service\bin\**\*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AppxPackagePayload Remove="Service\obj\**\*" />
+    <AppxPackagePayload Remove="Service\bin\**\*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <BundleResource Remove="Service\obj\**\*" />
+    <BundleResource Remove="Service\bin\**\*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Service\obj\**\*.cache" />
+    <None Remove="Service\bin\**\*.cache" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Service\obj\**\*.AssemblyAttributes.cs" />
+    <Compile Remove="Service\obj\**\*.GeneratedMSBuildEditorConfig.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Service\obj\**\*.g.cs" />
+    <Compile Remove="Service\obj\**\*.g.i.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Service\obj\**\*.AssemblyInfo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Service\bin\**\*.deps.json" />
+    <Compile Remove="Service\bin\**\*.runtimeconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Service\obj\**\*.json" />
+    <None Remove="Service\bin\**\*.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Service\obj\**\*.json" />
+    <Content Remove="Service\bin\**\*.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Service\obj\**\*.json" />
+    <EmbeddedResource Remove="Service\bin\**\*.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="Service\obj\**\*.json" />
+    <Page Remove="Service\bin\**\*.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Remove="Service\obj\**\*.json" />
+    <Resource Remove="Service\bin\**\*.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Analyzer Remove="Service\obj\**\*.json" />
+    <Analyzer Remove="Service\bin\**\*.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Remove="Service\obj\**\*.json" />
+    <AdditionalFiles Remove="Service\bin\**\*.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ClCompile Remove="Service\obj\**\*.json" />
+    <ClCompile Remove="Service\bin\**\*.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AppxManifest Remove="Service\obj\**\*.json" />
+    <AppxManifest Remove="Service\bin\**\*.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AppxPackagePayload Remove="Service\obj\**\*.json" />
+    <AppxPackagePayload Remove="Service\bin\**\*.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <BundleResource Remove="Service\obj\**\*.json" />
+    <BundleResource Remove="Service\bin\**\*.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PriFile Remove="Service\obj\**\*.json" />
+    <PriFile Remove="Service\bin\**\*.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <WinMD Remove="Service\obj\**\*" />
+    <WinMD Remove="Service\bin\**\*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Midl Remove="Service\obj\**\*" />
+    <Midl Remove="Service\bin\**\*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PriXml Remove="Service\obj\**\*" />
+    <PriXml Remove="Service\bin\**\*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Service\obj\**\*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Service\bin\**\*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Service\obj\**\*.txt" />
+    <Compile Remove="Service\bin\**\*.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Service\obj\**\*.xml" />
+    <Compile Remove="Service\bin\**\*.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Service\obj\**\*.dll" />
+    <Compile Remove="Service\bin\**\*.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Service\obj\**\*.exe" />
+    <Compile Remove="Service\bin\**\*.exe" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Service\obj\**\*.pdb" />
+    <Compile Remove="Service\bin\**\*.pdb" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Service\obj\**\*.cache" />
+    <Compile Remove="Service\bin\**\*.cache" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Service\obj\**\*.cs" />
+    <None Remove="Service\bin\**\*.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="Service\obj\**\*.cs" />
+    <Page Remove="Service\bin\**\*.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Service\obj\**\*.cs" />
+    <EmbeddedResource Remove="Service\bin\**\*.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Remove="Service\obj\**\*.cs" />
+    <Resource Remove="Service\bin\**\*.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ApplicationDefinition Remove="Service\obj\**\*.cs" />
+    <ApplicationDefinition Remove="Service\bin\**\*.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="Service\obj\**\*.xaml" />
+    <Page Remove="Service\bin\**\*.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Service\obj\**\*.csproj" />
+    <Compile Remove="Service\bin\**\*.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include=".github\workflows\publish.yml" />
+    <None Include="Installer\Switch.Package.wapproj" />
+    <None Include="Service\SwitchService.Host.csproj" />
+    <None Include="Tests\Switch.Tests.csproj" />
+    <None Include="UninstallChecker\UninstallChecker.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.ServiceProcess.ServiceController" Version="10.0.12" />
+  </ItemGroup>
+
+  <!-- If the app is still running from a previous debug session, kill it before build to avoid file lock errors -->
+  <Target Name="KillRunningAppBeforeBuild" BeforeTargets="BeforeBuild">
+    <Exec Command="taskkill /F /IM Switch.exe" ContinueOnError="true" />
+  </Target>
+
+</Project>

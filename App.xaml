@@ -1,0 +1,91 @@
+﻿<Application x:Class="Switch.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Switch"
+             xmlns:converters="clr-namespace:Switch.Converters"
+             >
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary.MergedDictionaries>
+
+            <DropShadowEffect x:Key="PopupShadow" BlurRadius="18" ShadowDepth="6" Color="#000000" Opacity="0.6" />
+            <converters:FirstLetterConverter x:Key="FirstLetterConverter" />
+            <converters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+            <!-- Vector app icon (shield) used for Window.Icon -->
+            <DrawingImage x:Key="AppIconImage">
+                <DrawingImage.Drawing>
+                    <DrawingGroup>
+                        <GeometryDrawing Brush="#B4FF39">
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry Figures="M32,6 L58,20 L58,46 C58,74 44,86 32,92 C20,86 6,74 6,46 L6,20 Z" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing Brush="#0A0A0B">
+                            <GeometryDrawing.Geometry>
+                                <!-- Simple 'S' path approximation -->
+                                <PathGeometry Figures="M24,34 C30,20 46,20 42,30 C38,40 26,40 30,50 C34,60 50,60 48,70" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                    </DrawingGroup>
+                </DrawingImage.Drawing>
+            </DrawingImage>
+
+            <!-- Fonts and brushes -->
+            <FontFamily x:Key="AppFont">Segoe UI</FontFamily>
+            <SolidColorBrush x:Key="BackgroundBrush">#0A0A0B</SolidColorBrush>
+            <SolidColorBrush x:Key="CardBrush">#161617</SolidColorBrush>
+            <SolidColorBrush x:Key="AccentGreen">#B4FF39</SolidColorBrush>
+            <SolidColorBrush x:Key="MutedText">#8A8A8E</SolidColorBrush>
+
+            <!-- Rounded button style using Border wrapper pattern -->
+            <Style x:Key="RoundButtonBorder" TargetType="Border">
+                <Setter Property="CornerRadius" Value="12" />
+                <Setter Property="Background" Value="#B4FF39" />
+            </Style>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+            <Style x:Key="DeleteButtonStyle" TargetType="Button">
+                <Setter Property="Background" Value="#272727" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="Padding" Value="10" />
+                <Setter Property="Height" Value="52" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="Width" Value="140" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="FontWeight" Value="Bold" />
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding IsPendingDelete}" Value="True">
+                        <Setter Property="Background" Value="#E94560" />
+                        <Setter Property="Foreground" Value="White" />
+                        <Setter Property="Content" Value="Pending" />
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+
+            <!-- Pulsing ellipse animation -->
+            <Style x:Key="PulsingDotStyle" TargetType="Ellipse">
+                <Setter Property="Width" Value="12" />
+                <Setter Property="Height" Value="12" />
+                <Setter Property="Fill" Value="#B4FF39" />
+                <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+                <Setter Property="RenderTransform">
+                    <Setter.Value>
+                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Opacity" Value="1" />
+                <Style.Triggers>
+                    <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard RepeatBehavior="Forever" AutoReverse="True">
+                                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.5" Duration="0:0:1" />
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" From="1" To="1.4" Duration="0:0:1" />
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" From="1" To="1.4" Duration="0:0:1" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

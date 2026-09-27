@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+        <DirectoryRef Id="INSTALLFOLDER">
+            <Directory Id="dir64DD1FF069CC8D2A28B5B2E6BCF9BAAD" Name="UninstallChecker" />
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="UninstallFiles">
+            <Component Id="cmp6FE2CD1C052B840CDF6A3A7CCE1CC36B" Directory="dir64DD1FF069CC8D2A28B5B2E6BCF9BAAD" Guid="PUT-GUID-HERE">
+                <File Id="fil4D8255CE0DDE4BBDF24EA65BE2F1C7D4" KeyPath="yes" Source="SourceDir\UninstallChecker\UninstallChecker.exe" />
+            </Component>
+        </ComponentGroup>
+    </Fragment>
+</Wix>
