@@ -1,170 +1,66 @@
-# Switch
+<div align="center">
 
-Switch is a Windows desktop app designed to help users take control of digital focus and productiveness by blocking distracting apps, browser installers, or folders during a scheduled session. It combines a polished desktop UI with a background Windows service that keeps enforcement active even when the app window is closed.
+  <img src="https://img.shields.io/badge/SWITCH-DESKTOP_OS-emerald?style=for-the-badge&logo=windows&logoColor=white" alt="Switch Logo" />
+  
+  # ⚡ SWITCH_
+  
+  <p align="center">
+    <b>The Ultimate Minimalist Focus & Goal Execution Engine for Windows.</b><br>
+    <i>Lock distractions out, channel total flow state, and enforce deep focus.</i>
+  </p>
 
-## Why Switch
+  <p align="center">
+    <a href="https://switch-landing.onrender.com/" target="_blank">
+      <img src="https://img.shields.io/badge/🚀_Live_Landing_Page-Preview_Web-10B981?style=flat-square&logo=safari" alt="Live Landing Page" />
+    </a>
+    <a href="https://github.com/chukstechstack/SwitchInstaller/releases/latest/download/SwitchInstaller.msi" target="_blank">
+      <img src="https://img.shields.io/badge/📦_Download_PC_Installer-.MSI_Release-3B82F6?style=flat-square&logo=windows" alt="Download Installer" />
+    </a>
+    <img src="https://img.shields.io/badge/Platform-Windows_10_%2F_11-blue?style=flat-square&logo=windows" alt="Platform" />
+    <img src="https://img.shields.io/badge/.NET-10.0-purple?style=flat-square&logo=dotnet" alt=".NET Version" />
+  </p>
 
-The app is built for people who want a simple, intentional control layer over their digital environment:
-
-- block websites and desktop apps during focus windows
-- lock folders or directories during active sessions
-- enforce session rules even while the main UI is closed
-- protect the active blocking state from casual bypass
-- support scheduled or time-based focus blocks
-
-## What it does
-
-Switch gives you a modern blocker experience with:
-
-- a WPF desktop interface
-- app and folder blocking
-- browser and installer blocking logic
-- service-backed enforcement
-- automatic startup support
-- persistent block state across sessions
-- uninstall protection while active blocks exist
-
-## Core features
-
-### App blocking
-
-Block specific applications by name, including browser processes and common installer patterns.
-
-### Folder locking
-
-Apply access-control protections to folders during active lock periods so blocked content cannot be opened or modified.
-
-### Focus sessions
-
-Define a block period, then let Switch keep enforcing it in the background while you stay focused.
-
-### Service-backed protection
-
-The app installs and runs a Windows service to keep enforcement active independently of the main UI.
-
-### Auto-start support
-
-Switch can register itself to run on Windows startup so the app is available immediately when the computer boots.
-
-### Uninstall safety
-
-When active blocks exist, uninstall flows are blocked to prevent easy bypass or tampering.
-
-## Architecture
-
-Switch is structured as a desktop application plus a background Windows service:
-
-- Switch UI: WPF application for user interaction
-- Switch.Service.Host: Windows service for enforcement and watchdog behavior
-- Block persistence: JSON-backed block store for active rules
-- Enforcement: process monitoring plus folder locking
-
-## Project layout
-
-- `Switch.csproj` — main desktop application
-- `Service/` — background service host and enforcement logic
-- `Model/` — data models used by the app
-- `Pages/` — UI pages and flows
-- `Installer/` — WiX installer files
-- `UninstallChecker/` — uninstall guard helper
-- `Tests/` — project tests and validation
-
-## Requirements
-
-- Windows 10 or Windows 11
-- .NET 10
-- Windows desktop development workload
-- Administrative rights for service installation and OS integration steps
-
-## Getting started
-
-### 1. Clone the repo
-
-```bash
-git clone <your-repository-url>
-cd Switch
-```
-
-### 2. Restore dependencies
-
-```powershell
-dotnet restore
-```
-
-### 3. Build the app
-
-```powershell
-dotnet build "Switch.csproj" -c Release
-```
-
-### 4. Publish the app
-
-```powershell
-dotnet publish "Switch.csproj" -c Release -r win-x64 --self-contained false -o "publish\final"
-```
-
-Then launch:
-
-```powershell
-"C:\Users\HP\source\repos\Switch\publish\final\Switch.exe"
-```
-
-## Service setup
-
-If you want the service-backed watchdog and enforcement behavior enabled:
-
-```powershell
-cd "C:\Users\HP\source\repos\Switch\publish\final"
-.\Switch.Service.Host.exe --install
-```
-
-This registers the service and starts it automatically.
-
-## Notes on security model
-
-Switch is designed as a practical Windows desktop enforcement tool, not a kernel-level anti-tamper system.
-
-Important realities:
-
-- a normal desktop app cannot fully guarantee it is impossible to terminate by an administrator on a machine they control
-- the app uses a real Windows service to keep enforcement active in the background
-- the service is the primary system boundary for protection logic
-- OS-level lockdown is only possible through enterprise policy, kiosk configuration, or kernel-level drivers
-
-This means Switch is best understood as a high-assurance desktop enforcement tool for managed or personal environments, not a generic root-level system hardening product.
-
-## License
-
-This project is provided for educational, internal, or personal use unless another license is specified in the repository.
-
-## Roadmap
-
-Planned growth areas include:
-
-- more precise scheduling and recurring focus windows
-- improved installer detection and browser blocking
-- stronger service watchdog behavior
-- polished reporting and analytics for active blocks
-- deployment via installer and managed packaging
-- kiosk-style hardening for enterprise use
-
-## Contributing
-
-Contributions are welcome. If you want to help improve the project:
-
-1. create a feature branch
-2. make a focused change
-3. validate it locally
-4. open a clean pull request
-
-## Support
-
-This project is meant to be a practical desktop utility and not a replacement for enterprise endpoint security tooling.
-
-## Status
-
-Switch is currently in active development as a desktop blocker/enforcement app with service-backed monitoring and protection logic.
+</div>
 
 ---
 
-Built for focus. Hardened for persistence. Designed for personal and managed Windows environments.
+## 🎬 Cinematic Architecture & Overview
+
+> **Switch** is a high-assurance Windows desktop application engineered to give you absolute control over your digital environment. By combining a modern WPF interface with a persistent background Windows service, Switch keeps enforcement active even when the app window is closed.
+
+<div align="center">
+  <br>
+  <!-- Optional showcase image placeholder -->
+  <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop" alt="Switch Architecture Preview" width="90%" style="border-radius: 16px; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 20px 50px rgba(0,0,0,0.8);" />
+  <br><br>
+</div>
+
+---
+
+## ✨ Why Switch?
+
+Switch is built for developers, creators, and high achievers who want a clean, intentional control layer over their OS:
+
+*   🛑 **App & Process Blocking** — Target distracting desktop applications, browser processes, and installer patterns.
+*   📁 **Folder Locking** — Apply strict access-control protections to directories during active focus windows.
+*   🛡️ **Service-Backed Enforcement** — Runs a dedicated Windows service (`Switch.Service.Host`) to keep monitoring active independently of the UI.
+*   🔒 **Uninstall Safety** — Actively guards against tampering and bypass flows while focus blocks are enforced.
+*   🔄 **Auto-Start Integration** — Registers seamlessly into system startup so rules apply the moment your PC boots.
+
+---
+
+## 🛠️ Technology Stack
+
+*   🖥️ **WPF (Windows Presentation Foundation)** — Modern, responsive desktop user interface.
+*   ⚙️ **C# / .NET 10** — High-performance backend logic and service communication.
+*   📦 **WiX Toolset** — Professional `.msi` installation package generation.
+*   🌐 **React & Tailwind CSS** — Powers the companion cinematic web landing page.
+
+---
+
+## 🚀 Quick Start & Development
+
+### 1. Clone the Repository
+```bash
+git clone [https://github.com/chukstechstack/Switch.git](https://github.com/chukstechstack/Switch.git)
+cd Switch
