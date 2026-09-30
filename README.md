@@ -37,6 +37,14 @@
 
 ---
 
+## 🌐 Live Experience & Installation
+
+*   🌟 **Test in Browser:** Check out the live landing page at **[switch-landing.onrender.com](https://switch-landing.onrender.com/)**.
+*   💻 **Get the Desktop App:** 
+    1. Head over to the **[Releases Page](https://github.com/chukstechstack/SwitchInstaller/releases/latest)**.
+    2. Download the latest `SwitchInstaller.msi`.
+    3. Run the installer and launch **SWITCH** from your desktop.
+
 ## ✨ Why Switch?
 
 Switch is built for developers, creators, and high achievers who want a clean, intentional control layer over their OS:
